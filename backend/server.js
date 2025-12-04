@@ -1,90 +1,3 @@
-// import express from "express";
-// import mongoose from "mongoose";
-// import cors from "cors";
-
-// const app = express();
-// const port = 3000;
-
-// mongoose.connect("mongodb://localhost:27017/to-do-list")
-//   .then(() => console.log("-> MongoDB Connected"))
-//   .catch(err => console.error("MongoDB Error", err));
-
-// const taskSchema = new mongoose.Schema({
-//   Task: { type: String, required: true },
-//   Date: { type: Date, default: Date.now },
-//   Status: { type: String, default: "Pending" }
-// });
-
-// const taskModel = mongoose.model("tasks", taskSchema);
-
-// app.use(cors());
-// app.use(express.json());
-
-// /* ADD TASK */
-// app.post("/addTask", async (req, res) => {
-//   try {
-//     const { Task } = req.body;
-
-//     const newTask = await taskModel.create({ Task });
-
-//     if (!newTask) {
-//       return res.json({ success:false });
-//     }
-
-//     res.json({ success:true });
-
-//   } catch (err) {
-//     console.error(err);
-//     res.json({ success:false, error:"Internal error" });
-//   }
-// });
-
-// /* GET TODAY TASKS */
-// app.get("/getTasks", async (req, res) => {
-//   try {
-//     const start = new Date();
-//     start.setHours(0,0,0,0);
-
-//     const end = new Date();
-//     end.setHours(23,59,59,999);
-
-//     const tasks = await taskModel.find({
-//       Date: { $gte:start, $lte:end }
-//     });
-
-//     res.json({ success:true, tasks });
-
-//   } catch (err) {
-//     console.error(err);
-//     res.json({ success:false, error:"Internal error" });
-//   }
-// });
-
-// /* UPDATE TASK STATUS */
-// app.put("/updateTaskStatus", async (req, res) => {
-//   try {
-//     const { id } = req.body;
-
-//     const updated = await taskModel.findByIdAndUpdate(
-//       id,
-//       { $set:{ Status:"Completed" } },
-//       { new:true }
-//     );
-
-//     if (!updated) return res.json({ success:false });
-
-//     res.json({ success:true });
-
-//   } catch (err) {
-//     console.error(err);
-//     res.json({ success:false, error:"Internal error" });
-//   }
-// });
-
-// app.listen(port, () => {
-//   console.log(`-> Server running at http://localhost:${port}`);
-// });
-
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -140,6 +53,27 @@ app.get("/getTasks", async (req, res) => {
   } catch (err) {
     console.error(err);
     return res.json({ success: false, error: "Internal Error" });
+  }
+});
+
+/* UPDATE TASK STATUS */
+app.put("/updateTaskStatus", async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    const updated = await taskModel.findByIdAndUpdate(
+      id,
+      { $set:{ Status:"Completed" } },
+      { new:true }
+    );
+
+    if (!updated) return res.json({ success:false });
+
+    res.json({ success:true });
+
+  } catch (err) {
+    console.error(err);
+    res.json({ success:false, error:"Internal error" });
   }
 });
 
