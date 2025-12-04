@@ -26,6 +26,33 @@ The UI is fully responsive and optimized for multiple screen sizes using Tailwin
 
 ---
 
+
+## Installation Guide
+
+---
+
+## Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/RamakotireddyGuttikonda/To-Do-List.git
+
+```
+## step 2: Run Frontend
+
+```bash
+cd To-Do-List
+npm install @vitejs/plugin-react --save-dev
+npm run dev
+```
+
+## step 3: Run Backend
+
+```bash
+cd To-Do-List
+npm install express mongoose cors
+cd backend
+node server.js
+```
 ---
 
 ## Features
@@ -51,29 +78,3 @@ The UI is fully responsive and optimized for multiple screen sizes using Tailwin
   - Task creation date
 
 ---
-
-## Installation Guide
-
----
-
-## Step 1: Clone the Repository
-
-```bash
-git clone https://github.com/RamakotireddyGuttikonda/To-Do-List.git
-
-```
-## step 2: Run Frontend
-
-```bash
-cd To-Do-List
-npm run dev
-```
-
-## step 3: Run Backend
-
-```bash
-npm install express mongoose cors
-cd To-Do-List
-cd backend
-node server.js
-```
