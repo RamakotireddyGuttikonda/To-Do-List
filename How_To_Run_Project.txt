@@ -1,0 +1,15 @@
+--->Step 1: Clone the Repository
+git clone https://github.com/RamakotireddyGuttikonda/To-Do-List.git
+
+
+--->step 2: Run Frontend
+cd To-Do-List
+npm install @vitejs/plugin-react --save-dev
+npm run dev
+
+
+--->step 3: Run Backend
+cd To-Do-List
+npm install express mongoose cors
+cd backend
+node server.js
